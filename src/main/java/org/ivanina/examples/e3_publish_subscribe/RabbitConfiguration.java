@@ -1,4 +1,4 @@
-package org.ivanina.examples.e3;
+package org.ivanina.examples.e3_publish_subscribe;
 
 
 import org.apache.log4j.Logger;

@@ -1,4 +1,4 @@
-package org.ivanina.examples.e1;
+package org.ivanina.examples.e1_hw;
 
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

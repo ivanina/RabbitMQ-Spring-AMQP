@@ -1,4 +1,4 @@
-package org.ivanina.examples.e2;
+package org.ivanina.examples.e2_queues;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

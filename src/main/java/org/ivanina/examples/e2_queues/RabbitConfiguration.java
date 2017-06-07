@@ -1,4 +1,4 @@
-package org.ivanina.examples.e2;
+package org.ivanina.examples.e2_queues;
 
 
 import org.apache.log4j.Logger;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableRabbit
 @Configuration
 public class RabbitConfiguration {
-    Logger logger = Logger.getLogger(org.ivanina.examples.e1.RabbitConfiguration.class);
+    Logger logger = Logger.getLogger(org.ivanina.examples.e1_hw.RabbitConfiguration.class);
 
     @Bean
     public ConnectionFactory connectionFactory() {

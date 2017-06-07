@@ -1,10 +1,8 @@
-package org.ivanina.examples.e3;
+package org.ivanina.examples.e3_publish_subscribe;
 
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-
-import java.util.Random;
 
 @Component
 public class RabbitMqListener {

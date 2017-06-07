@@ -1,4 +1,4 @@
-package org.ivanina.examples.e2;
+package org.ivanina.examples.e2_queues;
 
 import org.apache.log4j.Logger;
 import org.springframework.amqp.core.AmqpTemplate;
