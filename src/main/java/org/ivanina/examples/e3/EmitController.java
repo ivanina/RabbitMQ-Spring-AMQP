@@ -10,19 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmitController {
-
-    Logger logger = Logger.getLogger(EmitController.class);
+    private Logger logger = Logger.getLogger(EmitController.class);
 
     @Autowired
-    AmqpTemplate template;
+    RabbitTemplate template;
 
-    @RequestMapping("/queue")
+    @RequestMapping("/")
     @ResponseBody
-    String queue1() {
-        logger.info("Emit to queue");
-        for(int i = 0;i<10;i++)
-            template.convertAndSend("query-example-2","This is simple Message " + i);
-        logger.info("Emitted");
-        return "Emit to queue";
+    String home() {
+        return "Empty mapping";
+    }
+
+    @RequestMapping("/emit")
+    @ResponseBody
+    String emit() {
+        logger.info("Emit to exchange-example-3");
+        template.setExchange("exchange-example-3");
+        for(int i = 0; i < 3; i++)
+            template.convertAndSend("This is Fanout message #"+(i+1));
+        return "Emit to exchange-example-3";
     }
 }

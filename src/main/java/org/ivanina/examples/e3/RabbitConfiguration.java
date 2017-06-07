@@ -2,8 +2,7 @@ package org.ivanina.examples.e3;
 
 
 import org.apache.log4j.Logger;
-import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -15,28 +14,50 @@ import org.springframework.context.annotation.Configuration;
 @EnableRabbit
 @Configuration
 public class RabbitConfiguration {
-    Logger logger = Logger.getLogger(org.ivanina.examples.e1.RabbitConfiguration.class);
+    Logger logger = Logger.getLogger(RabbitConfiguration.class);
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        return new CachingConnectionFactory("localhost");
+        CachingConnectionFactory connectionFactory =
+                new CachingConnectionFactory("localhost");
+        return connectionFactory;
     }
 
     @Bean
     public AmqpAdmin amqpAdmin() {
-        return new RabbitAdmin(connectionFactory());
+        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory());
+        return rabbitAdmin;
     }
 
     @Bean
     public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(connectionFactory());
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
+        return rabbitTemplate;
     }
 
 
-    // Decelerate the Queues
     @Bean
     public Queue myQueue1() {
-        return new Queue("query-example-2");
+        return new Queue("query-example-3-1");
     }
 
+    @Bean
+    public Queue myQueue2() {
+        return new Queue("query-example-3-2");
+    }
+
+    @Bean
+    public FanoutExchange fanoutExchangeA(){
+        return new FanoutExchange("exchange-example-3");
+    }
+
+    @Bean
+    public Binding binding1(){
+        return BindingBuilder.bind(myQueue1()).to(fanoutExchangeA());
+    }
+
+    @Bean
+    public Binding binding2(){
+        return BindingBuilder.bind(myQueue2()).to(fanoutExchangeA());
+    }
 }
