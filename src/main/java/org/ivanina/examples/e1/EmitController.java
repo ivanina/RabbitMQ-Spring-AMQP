@@ -21,8 +21,10 @@ public class EmitController {
     @RequestMapping("/emit")
     @ResponseBody
     String queue1() {
-        logger.info("Emit to queue1");
-        template.convertAndSend("queue1","Message to queue");
+        logger.info("<<-- Emit to queue1");
+        template.convertAndSend("queue1","Message to queue #1");
+        logger.info("<<-- Emit to queue2");
+        template.convertAndSend("queue2","Message to queue #2");
         return "Emit to queue";
     }
 }

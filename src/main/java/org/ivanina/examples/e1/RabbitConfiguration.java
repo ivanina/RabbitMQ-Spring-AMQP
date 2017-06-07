@@ -38,6 +38,12 @@ public class RabbitConfiguration {
         return new Queue("queue1");
     }
 
+    // Declare Queue with name queue2
+    @Bean
+    public Queue myQueue2() {
+        return new Queue("queue2");
+    }
+
     // Declare the container for message listener
     @Bean
     public SimpleMessageListenerContainer messageListenerContainer1() {
@@ -49,7 +55,7 @@ public class RabbitConfiguration {
 
             //Here we catch messages from queue1
             public void onMessage(Message message) {
-                logger.info("received from queue1 : " + new String(message.getBody()));
+                logger.info("-->>  Received from queue1 : " + new String(message.getBody()));
             }
         });
         return container;
