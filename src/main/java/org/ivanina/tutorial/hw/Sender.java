@@ -1,4 +1,4 @@
-package org.ivanina.tutorial_one_java.hw;
+package org.ivanina.tutorial.hw;
 
 
 import com.rabbitmq.client.Channel;
