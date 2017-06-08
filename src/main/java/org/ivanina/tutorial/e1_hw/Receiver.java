@@ -1,4 +1,4 @@
-package org.ivanina.tutorial.hw;
+package org.ivanina.tutorial.e1_hw;
 
 
 import com.rabbitmq.client.*;

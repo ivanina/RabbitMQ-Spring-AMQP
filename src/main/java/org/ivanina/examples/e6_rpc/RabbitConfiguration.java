@@ -35,7 +35,7 @@ public class RabbitConfiguration {
         return template;
     }
 
-    // queues
+    // e2_queues
     @Bean
     public Queue queue(){
         return new Queue("query-example-6");

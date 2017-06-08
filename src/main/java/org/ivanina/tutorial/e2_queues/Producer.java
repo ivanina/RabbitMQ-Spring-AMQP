@@ -1,4 +1,4 @@
-package org.ivanina.tutorial.queues;
+package org.ivanina.tutorial.e2_queues;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -39,7 +39,7 @@ public class Producer {
         // with Message acknowledgment
         channel.queueDeclare(
                 Q_NAME,
-                durable,
+                durable, // <-- !!!
                 false,
                 false,
                 null
@@ -51,7 +51,7 @@ public class Producer {
             channel.basicPublish(
                     "",
                     Q_NAME,
-                    MessageProperties.PERSISTENT_TEXT_PLAIN,
+                    MessageProperties.PERSISTENT_TEXT_PLAIN, // <-- !!!
                     msg.getBytes()
             );
             System.out.println("[x] Sent: '"+msg+"'");

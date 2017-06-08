@@ -1,4 +1,4 @@
-package org.ivanina.tutorial.queues;
+package org.ivanina.tutorial.e2_queues;
 
 import com.rabbitmq.client.*;
 
@@ -21,7 +21,7 @@ public class Worker {
         // with Message acknowledgment
         channel.queueDeclare(
                 Q_NAME,
-                durable,
+                durable, // <-- !!!
                 false,
                 false,
                 null
@@ -44,7 +44,7 @@ public class Worker {
                     e.printStackTrace();
                 } finally {
                     System.out.println(" [x] Done");
-                    channel.basicAck(envelope.getDeliveryTag(), false);
+                    channel.basicAck(envelope.getDeliveryTag(), false);  // <-- +++ !!!
                 }
             }
         };
