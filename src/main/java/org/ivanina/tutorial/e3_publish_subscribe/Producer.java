@@ -43,7 +43,7 @@ public class Producer {
             String msg = tasks.remove();
             channel.basicPublish(
                     EX_NAME,
-                    "",
+                    "", // do not use queue name - we 'listen' in exchange
                     null,
                     msg.getBytes()
             );

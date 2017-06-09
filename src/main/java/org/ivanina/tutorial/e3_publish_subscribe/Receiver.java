@@ -16,7 +16,7 @@ public class Receiver {
 
         channel.exchangeDeclare(EX_NAME,"fanout");
 
-        String queueName =channel.queueDeclare().getQueue();
+        String queueName =channel.queueDeclare().getQueue(); // make random temporally queue
         channel.queueBind(
                 queueName,
                 EX_NAME,
@@ -40,7 +40,7 @@ public class Receiver {
                 }
             }
         };
-        channel.basicConsume(queueName,consumer);
+        channel.basicConsume(queueName,consumer); // use queueName, which declared below
     }
 
     public static void doWork(String task) throws InterruptedException {
